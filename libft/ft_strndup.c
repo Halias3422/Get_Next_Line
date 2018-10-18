@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_strndup.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/15 10:47:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 11:49:12 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/11 16:51:51 by vde-sain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/11 17:06:59 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 15
+char		*ft_strndup(const char *s1, size_t n)
+{
+	char	*dest;
+	size_t	a;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	a = 0;
+	if ((int)n < 0)
+		n = ft_strlen(s1);
+	if (!(dest = (char*)malloc(sizeof(*s1) * (n + 1))))
+		return (NULL);
+	while (s1[a] && a < n)
+	{
+		dest[a] = s1[a];
+		a++;
+	}
+	dest[a] = '\0';
+	return (dest);
+}

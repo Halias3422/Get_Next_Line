@@ -1,26 +1,33 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_strlcat.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/15 10:47:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 11:49:12 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/08 11:37:24 by vde-sain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/12 13:00:21 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
+#include <stdio.h>
 
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 15
+size_t			ft_strlcat(char *dst, const char *src, size_t size)
+{
+	size_t	a;
+	size_t	b;
+	size_t	c;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	a = 0;
+	c = 0;
+	while (dst[a] && a < size)
+		a++;
+	b = a;
+	while (src[c] && ((b + c) + 1) < size)
+		dst[a++] = src[c++];
+	if (b < size)
+		dst[a] = '\0';
+	return (b + ft_strlen(src));
+}

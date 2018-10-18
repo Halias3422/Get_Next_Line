@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_range.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/15 10:47:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 11:49:12 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/12 11:14:52 by vde-sain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/12 11:16:33 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 15
+int		*ft_range(int min, int max)
+{
+	int		a;
+	int		b;
+	int		*tab;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	if (min >= max)
+		return (0);
+	a = max - min;
+	b = 0;
+	if (!(tab = (int*)malloc(sizeof(int) * a)))
+		return (0);
+	while (b < a)
+	{
+		tab[b] = min;
+		b++;
+		min++;
+	}
+	return (tab);
+}

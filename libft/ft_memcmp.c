@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_memcmp.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/15 10:47:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 11:49:12 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/08 13:42:31 by vde-sain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/09 15:47:06 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 15
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	size_t	a;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	a = 0;
+	while (a < n && ((unsigned char*)s1)[a] == ((unsigned char*)s2)[a])
+		a++;
+	if (a == n)
+		return (0);
+	return (((unsigned char*)s1)[a] - ((unsigned char*)s2)[a]);
+}

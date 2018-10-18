@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_strsub.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/15 10:47:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 11:49:12 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/04 15:19:08 by vde-sain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/10 12:10:52 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 15
+char				*ft_strsub(char const *s, unsigned int start, size_t len)
+{
+	unsigned int	a;
+	char			*dest;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	a = 0;
+	if (s)
+	{
+		if (!(dest = (char*)malloc(sizeof(char) * (len + 1))))
+			return (NULL);
+		while (a < len)
+			dest[a++] = s[start++];
+		dest[a] = '\0';
+		return (dest);
+	}
+	return (NULL);
+}

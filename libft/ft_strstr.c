@@ -1,26 +1,42 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   get_next_line.h                                  .::    .:/ .      .::   */
+/*   ft_strstr.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/15 10:47:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 11:49:12 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/05 18:02:53 by vde-sain     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/11 12:05:04 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <sys/types.h>
-# include <sys/uio.h>
-# include <unistd.h>
-# include "libft/libft.h"
-# define BUFF_SIZE 15
+char	*ft_strstr(const char *haystack, const char *needle)
+{
+	int		a;
+	int		b;
 
-int		get_next_line(const int fd, char **line);
-
-#endif
+	a = 0;
+	b = 0;
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	while (haystack[a])
+	{
+		while (haystack[a] == needle[b] && needle[b])
+		{
+			a++;
+			b++;
+		}
+		if (needle[b] == '\0')
+			return ((char *)&haystack[a - b]);
+		else if (needle[b] != '\0' && b > 0)
+		{
+			a = a - (b - 1);
+			b = 0;
+		}
+		a++;
+	}
+	return (NULL);
+}
