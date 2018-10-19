@@ -6,7 +6,7 @@
 /*   By: vde-sain <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/15 10:47:50 by vde-sain     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/18 11:49:12 by vde-sain    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/19 15:57:03 by vde-sain    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@
 # include <sys/uio.h>
 # include <unistd.h>
 # include "libft/libft.h"
-# define BUFF_SIZE 15
+# define BUFF_SIZE 1
 
 int		get_next_line(const int fd, char **line);
 
